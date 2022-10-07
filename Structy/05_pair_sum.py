@@ -15,9 +15,18 @@
     3. find a pair that equals to the target number
     4. if not, keep the process till the last element
     5. return the indices
+
+    approach: dictionary
+    0. create a variable called dict to store dictionary value
+    1. loop through the list and each element as the key and index as value
+    2. as we looping each element, we alway check if the different(target_sum - current_num) can be found in the dict
+    3. if found, we return the current index and use the different as key to access the value(index) in the dict
+    
+    ** we have to check if the difference exists in the dictitonary before adding new key and value to it. so we always return the previous index and current index that the elements will be the target sum
 '''
 
-def pair_sum_bf(numbers, target_sum): 
+
+def pair_sum_bf(numbers, target_sum):
     i = 0
     size = len(numbers)
 
@@ -31,7 +40,6 @@ def pair_sum_bf(numbers, target_sum):
             if n_1 + n_2 == target_sum:
                 return(i, j)
         i += 1
-
 
 
 def pair_sum(numbers, target):
