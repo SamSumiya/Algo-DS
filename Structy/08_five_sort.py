@@ -50,5 +50,16 @@ def five_sort_bf(nums):
     return nums
 
 
-def five_sort(nums): 
-    
+def five_sort(nums):
+    i = 0
+    j = len(nums) - 1
+
+    while i < j:
+        if nums[j] == 5:
+            j -= 1
+        elif nums[i] == 5:
+            nums[i], nums[j] = nums[j], nums[i]
+        else:
+            i += 1
+
+    return nums
