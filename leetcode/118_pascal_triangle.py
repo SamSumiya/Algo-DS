@@ -41,8 +41,8 @@ class Solution:
             inner_list = [1]
             j = 0
 
-            while j < len(output[i]) - 1:
-                sum = output[i][j] + output[i][j+1]
+            while j < len(output[i - 1]) - 1:
+                sum = output[i-1][j] + output[i-1][j+1]
                 inner_list.append(sum)
 
                 j += 1
