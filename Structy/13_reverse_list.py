@@ -6,6 +6,7 @@
     approach: iteration 
         we will need to change the next from a -> b to None <- a ..., so we need to a new variable and set its value to None
         after that we need to modify the head so we will need to keep the reference of the rest of the ll
+        head will have new values ( ** head will no longer be the original head ** )
         
         1. we need to create a new variable and set it value to none
         2. modify the first to point at none
@@ -21,7 +22,6 @@
         3. get the rest of linked list
         4. new_head will be the current head which points to None at the beginning
         4. return the value that head will be the next_node and new_node will be node
-
 '''
 
 
