@@ -15,6 +15,22 @@
         1. dummy_1 has to be less than 1 so we can avoid the duplicate for the first node value
         2. another thing is that next will give us the next value instead of the entire ll which is the key to solve this issue in iterative way
         3. note that head_1 or head_2 might have some remaining values so we should capture it before return it
+
+    
+    approach: recursion
+        basecase will be either ll1 or ll2 is none, when it becomes none we can return ll1 or ll2
+        keep getting the next ll1 and ll2
+        modify ll1 and ll2 
+            1. ll1 is easy we just need to set ll1.next = ll2 
+            2. the tricky part is ll2
+                a. 1 -> 2 and a -> b case 
+                b. ll1 will be 1 -> a -> b
+                c. then we will need to update b back to 2
+                d. so we can think about using the recursive call and pass the next nodes to it
+                e. then ll2 will be updated to a -> 2
+                f. and since ll1.next is ll2
+                g. the outcome will be 1 -> a -> 2 
+                h. then we will continue the process
 '''
 
 
@@ -38,4 +54,17 @@ def zipper_lists_iter(head_1, head_2):
     if head_2:
         dummy.next = head_2
 
+    return head_1
+
+
+def zipper_lists(head_1, head_2):
+    if head_1 is None:
+        return head_2
+    if head_2 is None:
+        return head_1
+
+    next_1 = head_1.next
+    next_2 = head_2.next
+    head_1.next = head_2
+    head_2.next = zipper_lists(next_1, next_2)
     return head_1
