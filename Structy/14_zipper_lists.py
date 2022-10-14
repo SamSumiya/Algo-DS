@@ -57,7 +57,36 @@ def zipper_lists_iter(head_1, head_2):
     return head_1
 
 
-def zipper_lists(head_1, head_2):
+class Node:
+    def __init__(self, val):
+        self.val = val
+        self.next = None
+
+
+def zipper_lists_iter_newhead(head_1, head_2):
+    new_head = Node(None)
+    dummy = new_head
+    count = 0
+
+    while head_1 and head_2:
+        if count % 2 == 0:
+            dummy.next = head_1
+            head_1 = head_1.next
+        else:
+            dummy.next = head_2
+            head_2 = head_2.next
+        dummy = dummy.next
+        count += 1
+
+    if head_1:
+        dummy.next = head_1
+    if head_2:
+        dummy.next = head_2
+
+    return new_head.next
+
+
+def zipper_lists_recur(head_1, head_2):
     if head_1 is None:
         return head_2
     if head_2 is None:
@@ -66,5 +95,5 @@ def zipper_lists(head_1, head_2):
     next_1 = head_1.next
     next_2 = head_2.next
     head_1.next = head_2
-    head_2.next = zipper_lists(next_1, next_2)
+    head_2.next = zipper_lists_recur(next_1, next_2)
     return head_1
