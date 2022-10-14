@@ -27,20 +27,65 @@
 
 
 def longest_streak_my_iter(head):
-    if head == None: return 0 
+    if head == None:
+        return 0
     count = 0
     base_val = head.val
     output = []
 
-    while head: 
-        if head.val == base_val: 
+    while head:
+        if head.val == base_val:
             count += 1
-            if head.next == None: 
+            if head.next == None:
                 output.append(count)
         else:
             output.append(count)
             base_val = head.val
             count = 1
-        
+
         head = head.next
     return max(output)
+
+
+def longest_streak_iter_2(head):
+    max_streak = 0
+    current_streak = 0
+    prev_val = None
+
+    while head:
+        if prev_val == None:
+            prev_val = head.val
+        if prev_val == head.val:
+            current_streak += 1
+            if head.next == None:
+                if current_streak > max_streak:
+                    max_streak = current_streak
+        else:
+            if current_streak > max_streak:
+                max_streak = current_streak
+            prev_val = head.val
+            current_streak = 1
+        head = head.next
+
+    return max_streak
+
+
+def longest_streak(head):
+
+    max_count = 0
+    current_count = 0
+    prev_val = None
+
+    while head:
+        if head.val == prev_val:
+            current_count += 1
+        else:
+            current_count = 1
+
+        prev_val = head.val
+
+        if current_count > max_count:
+            max_count = current_count
+        head = head.next
+
+    return max_count
