@@ -12,11 +12,11 @@
 
         since we cannot modify the original head
         we need to create a copy of the head for manipulation
-        additonally we also need to have access to the first and second values on each nodes
+        additonally we also need to have access to the previous and next values on each nodes iteration
         and these nodes will be shorter everytime so we can move to the end of the linked list
         if we find the match to the target value
-        we can just simply connect the current node.next to the copy.next 
-        and break it (Since we no longer need to process the remaining data)
+        we can just simply connect the previous to the current linked list next node 
+        and then break it (Since we no longer need to process the remaining data)
         ** edge case ** 
         when the head.val immediately equals to the target
         we can just return whatever comes after the head 
