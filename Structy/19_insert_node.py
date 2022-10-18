@@ -5,12 +5,18 @@
     consider head as index 0 
 
     Approach: iterative
-    we will need a count and set it at 0 initially
-    every loop we will need to increment the index up by 1
-    when the index equals to the specified index
-    we will need to creat a new node and link it to the previous linked list and get the linked list after
-    previous ll 
-    when 
+        we will need a count and set it at 0 initially
+        every loop we will need to increment the index up by 1
+        when the index equals to the specified index
+        we will need to creat a new node and link it to the previous linked list and get the linked list after
+    
+
+    Approach: iteration
+        we will keep extending the linked list to the base case 
+        base case: 
+            if index is 0
+            then we can create the node and link the new node to the remaining head
+        at the end of it, we will return the head to get new linked list
 
 '''
 
@@ -21,7 +27,7 @@ class Node:
         self.next = None
 
 
-def insert_node(head, value, index):
+def insert_node_iter(head, value, index):
     count = 1
     tail = head
     new_node = Node(value)
@@ -38,4 +44,14 @@ def insert_node(head, value, index):
         tail = tail.next
         count += 1
 
+    return head
+
+
+def insert_node_recur(head, value, index):
+    if index == 0:
+        new_head = Node(value)
+        new_head.next = head
+        return new_head
+
+    head.next = insert_node_recur(head.next, value, index - 1)
     return head
