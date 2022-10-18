@@ -23,6 +23,13 @@
         we can simply add one to the carry and change the carry to 0 when the sum is less than 9
         we can use modulo 10 to the first digit 
 
+    approachl: recursion
+        we need to create a new linked list and it can be the first node which is head 
+        then we will need to add the next sum to the next node
+        the carry over and be dealt in args and use a if statement to either keep it or delete it
+        if key here is that every function call, we need to provide some values to val_1 and val_2 so we wont run into issues as 
+        None + a number
+
 
 '''
 
@@ -80,3 +87,34 @@ def add_lists(head_1, head_2):
             head_2 = head_2.next
 
     return head.next
+
+
+def add_lists_recur(head_1, head_2, carry=0):
+    if head_1 is None and head_2 is None and carry == 0:
+        return None
+
+    if head_1:
+        val_1 = head_1.val
+    else:
+        2 cxl
+        val_1 = 0
+    if head_2:
+        val_2 = head_2.val
+    else:
+        val_2 = 0
+    sum = val_1 + val_2 + carry
+    next_carry = 1 if sum > 9 else 0
+    digit = sum % 10
+    node = Node(digit)
+
+    if head_1:
+        next_1 = head_1.next
+    else:
+        next_1 = None
+    if head_2:
+        next_2 = head_2.next
+    else:
+        next_2 = None
+
+    node.next = add_lists_recur(next_1, next_2, next_carry)
+    return node
