@@ -28,3 +28,12 @@ def create_linked_list(values):
         tail = tail.next
 
     return head.next
+
+
+def create_linked_list_recur(values):
+    if len(values) == 0:
+        return
+    head = Node(values[0])
+
+    head.next = create_linked_list(values[1:])
+    return head
