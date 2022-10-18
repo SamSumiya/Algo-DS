@@ -19,7 +19,12 @@
         and then break it (Since we no longer need to process the remaining data)
         ** edge case ** 
         when the head.val immediately equals to the target
-        we can just return whatever comes after the head 
+        we can just return whatever comes after the head
+    
+    approach: recursive
+        we will need to skip one node
+        since we are in a recurision, we can chain up the nodes by using the original linked list
+
 
 '''
 
