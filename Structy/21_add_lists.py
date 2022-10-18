@@ -96,7 +96,6 @@ def add_lists_recur(head_1, head_2, carry=0):
     if head_1:
         val_1 = head_1.val
     else:
-        2 cxl
         val_1 = 0
     if head_2:
         val_2 = head_2.val
