@@ -37,3 +37,12 @@ def create_linked_list_recur(values):
 
     head.next = create_linked_list(values[1:])
     return head
+
+
+def create_linked_list(values, idx=0):
+    if idx == len(values):
+        return
+
+    node = Node(values[idx])
+    node.next = create_linked_list(values, idx + 1)
+    return node
