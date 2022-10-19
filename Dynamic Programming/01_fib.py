@@ -19,7 +19,7 @@
         we will always check if the memo exits: 
             if it does we will return that value
         if not we will add the result from the recursive call to the memo
-        
+
 
 '''
 
@@ -62,7 +62,6 @@ def fib_memo(num,memo = {}):
         if num <= 2: return 1 
         memo[num] = fib_memo(num - 1, memo) + fib_memo(num - 2, memo)
         return memo[num]
-    
     
 result = fib_memo(50)
 print(result)
