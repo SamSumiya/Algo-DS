@@ -42,7 +42,7 @@ def fib_iter(num):
 
     return l[-1]
 
-# result = fib_iter(9)
+# result = fib_iter(1000)
 # print(result)
 
 def fib_recur(num): 
@@ -63,8 +63,8 @@ def fib_memo(num,memo = {}):
         memo[num] = fib_memo(num - 1, memo) + fib_memo(num - 2, memo)
         return memo[num]
     
-result = fib_memo(50)
-print(result)
+# result = fib_memo(1000)
+# print(result)
 
 
 
