@@ -15,15 +15,16 @@
         additonally we also need to have access to the previous and next values on each nodes iteration
         and these nodes will be shorter everytime so we can move to the end of the linked list
         if we find the match to the target value
-        we can just simply connect the previous to the current linked list next node 
+        we can just simply connect the previous to the current linked list next node
         and then break it (Since we no longer need to process the remaining data)
-        ** edge case ** 
+        ** edge case **
         when the head.val immediately equals to the target
         we can just return whatever comes after the head
-    
+
     approach: recursive
         we will need to skip one node
         since we are in a recurision, we can chain up the nodes by using the original linked list
+        we will keep move to the next node in the linked list until it reaches the end 
 
 
 '''
@@ -43,4 +44,15 @@ def remove_node(head, target_val):
         second_copy = copy
         copy = copy.next
 
+    return head
+
+
+def remove_node_recur(head, target_val):
+    if head is None: return
+
+    next_node = head.next
+    if head.val == target_val:
+        head = head.next
+    else:
+        head.next = remove_node(next_node, target_val)
     return head
