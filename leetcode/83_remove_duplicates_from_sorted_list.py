@@ -7,6 +7,20 @@
         1 -> 1 -> 2 will be 1 -> 2
         1 -> 1 -> 1 will just 1
 
+    approch: iterative
+        we will compare the first and second value 
+        if there is a match
+            we will skip the next one
+        else (must have else)
+            if no else: then tail will be altered
+            lets say 1 -> 1 -> 1
+            so befor eles: my current tail should be 1 
+            but if there is else
+                tail = tail.next
+                it will give me  1 -> 1 instead
+        we can just compare the first value and second value
+
+
     
     approach: recursive
         I will need to capture the previous node value and current node value
@@ -55,3 +69,19 @@ class Solution:
 
 #         head.next = Solution.deleteDuplicates(self, next_node, current_val)
 #         return head
+
+
+class Solution:
+    def deleteDuplicates(self, head: Optional[ListNode]) -> Optional[ListNode]:
+        tail = head 
+        
+        while tail and tail.next:
+            Next_Node = None
+            if tail.next.val == tail.val: 
+                Next_Node = tail.next.next
+                # tail.next = tail.next.next
+                tail.next = Next_Node
+            else:
+                tail = tail.next
+    
+        return head
