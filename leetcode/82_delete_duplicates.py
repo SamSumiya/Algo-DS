@@ -30,7 +30,6 @@ class ListNode:
 class Solution:
     def deleteDuplicates(self, head: Optional[ListNode], prev_val = None) -> Optional[ListNode]:
         if head is None or head.next is None: return head
-        # prev_val = None
         
         if head.val == head.next.val:
             prev_val = head.next.val
