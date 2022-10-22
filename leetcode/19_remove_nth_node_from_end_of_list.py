@@ -1,8 +1,11 @@
 from typing import Optional
 
 '''
+[1 2 3 4 5]
+3 4 5 
 
-    Approach: iterative 
+
+    Approach: iterative (Brute force)
         [there is a nested while loop so the time complexity O2 ]
         this is a little brute force way of solving this challenge
         I first reversed the linked list and then 
@@ -22,6 +25,17 @@ from typing import Optional
                 so the current will hold the previous node value
                 which helps me to keep track of the right order
 
+    approach: iterative 
+        use two variables to modify head
+        one does not modify the head, but we should use it for second variabe to get to the right index
+        if the num is 2: 
+            then we can just modify the first linked list by shortening it
+            then the remaining length of first_val can be used as a lenght to shorten the second_variable
+            *** however, we need to pay attention to the one edge case which is what if there is only one node and num is 1
+            this should return None so we can basically say if var_1 is None(after the iteration), we will just return head.next
+        for the rest
+            we can use val_1 to iterave and skip the node when val_1 is None
+        return the head at the end
 
 '''
 
@@ -31,7 +45,7 @@ class ListNode:
         self.next = next
 
 class Solution:
-    def removeNthFromEnd(self, head: Optional[ListNode], n: int, new_head = None, output = None) -> Optional[ListNode]:
+    def removeNthFromEnd_bf(self, head: Optional[ListNode], n: int, new_head = None, output = None) -> Optional[ListNode]:
         
         while head: 
             next_node = head.next
@@ -65,3 +79,12 @@ class Solution:
             output = new_head 
             new_head = next_node
         return output
+
+
+    def removeNthFromEnd(self, head: Optional[ListNode], n: int, new_head = None, output = None) -> Optional[ListNode]:
+        fast, slow = head, head
+        for _ in range(n): fast = fast.next
+        if fast is None: return head.next
+        while fast.next: fast, slow = fast.next, slow.next
+        slow.next = slow.next.next
+        return head
