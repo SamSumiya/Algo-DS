@@ -44,3 +44,10 @@ def tree_includes_bf_iter(root, target):
             queue.append(current.right)
 
     return False
+
+
+def tree_includes_df_recur(root, target):
+  if root is None: return False
+  if root.val == target: return True
+  
+  return tree_includes_df_recur(root.left, target) or tree_includes_df_recur(root.right, target)
