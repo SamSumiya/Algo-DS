@@ -11,7 +11,7 @@
 '''
 
 
-def tree_includes(root, target):
+def tree_includes_dp_iter(root, target):
     if root == None:
         return False
     stack = [root]
@@ -25,5 +25,22 @@ def tree_includes(root, target):
             stack.append(current.left)
         if current.right:
             stack.append(current.right)
+
+    return False
+
+
+def tree_includes_bf_iter(root, target):
+    if root == None:
+        return False
+    queue = [root]
+
+    while queue:
+        current = queue.pop(0)
+        if current.val == target:
+            return True
+        if current.left:
+            queue.append(current.left)
+        if current.right:
+            queue.append(current.right)
 
     return False
