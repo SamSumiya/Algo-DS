@@ -31,3 +31,21 @@ def breadth_first_values(root):
             output.append(current.right.val)
 
     return output
+
+
+def breadth_first_values(root):
+    if root is None:
+        return []
+
+    queue = [root]
+    output = []
+
+    while queue:
+        current = queue.pop(0)
+        output.append(current.val)
+        if current.left:
+            queue.append(current.left)
+        if current.right:
+            queue.append(current.right)
+
+    return output
