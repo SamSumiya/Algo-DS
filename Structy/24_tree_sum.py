@@ -10,7 +10,7 @@
 '''
 
 
-def tree_sum(root):
+def tree_sum_df_iter(root):
     output = 0
     if root is None:
         return output
@@ -26,3 +26,13 @@ def tree_sum(root):
             stack.append(current.right)
 
     return output
+
+
+def tree_sum_dp_recur(root):
+    if root is None:
+        return 0
+
+    left = tree_sum_dp_recur(root.left)
+    right = tree_sum_dp_recur(root.right)
+
+    return root.val + left + right
