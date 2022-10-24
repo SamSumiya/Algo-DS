@@ -36,3 +36,21 @@ def tree_sum_dp_recur(root):
     right = tree_sum_dp_recur(root.right)
 
     return root.val + left + right
+
+
+def tree_sum_bp_iter(root):
+    if root is None:
+        return 0
+    output = 0
+    queue = [root]
+
+    while queue:
+        current = queue.pop(0)
+        output += current.val
+
+        if current.left:
+            queue.append(current.left)
+        if current.right:
+            queue.append(current.right)
+
+    return output
