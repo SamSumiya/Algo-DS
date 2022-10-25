@@ -11,7 +11,7 @@
             update it to that value
     
     approach: depth first recursion
-        at the end, we return a float('inf')
+        at the end, we return a float('inf'), so 
         so our job is to hit the base case for each branch and return the smaller nunber
         so we should go left and right and each branch will return a number
         at the end, we should get the left and right branchs' smallest number
