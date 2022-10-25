@@ -22,3 +22,20 @@
         and then reverse the list which is also O(n) 
         
 '''
+
+
+def path_finder(root, target):
+    if root is None:
+        return None
+
+    if root.val == target:
+        return [root.val]
+
+    left = path_finder(root.left, target)
+    if left:
+        return [root.val, *left]
+    right = path_finder(root.right, target)
+    if right:
+        return [root.val, *right]
+
+    return None
