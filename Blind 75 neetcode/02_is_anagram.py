@@ -11,25 +11,38 @@
 '''
 
 
-
 def isAnagram_hashmap(s, t):
-    hashmap = {} 
-        
+    hashmap = {}
+
     for el in s:
-        if el not in hashmap: 
+        if el not in hashmap:
             hashmap[el] = 1
-        else: 
+        else:
             hashmap[el] += 1
     print(hashmap)
-    for el in t: 
-        if el in hashmap: 
+    for el in t:
+        if el in hashmap:
             hashmap[el] -= 1
-        else: 
+        else:
             hashmap[el] = 1
-        
+
     print(hashmap)
-    for key, value in hashmap.items(): 
-        if value != 0: 
+    for key, value in hashmap.items():
+        if value != 0:
             return False
-        
+
+    return True
+
+
+def isAnagram_hashmap_sort(s, t):
+    sorted_s = sorted(s)
+    sorted_t = sorted(t)
+    if len(sorted_s) != len(sorted_t):
+        return False
+    i = 0
+
+    while i < len(sorted_s):
+        if sorted_s[i] != sorted_t[i]:
+            return False
+        i += 1
     return True
