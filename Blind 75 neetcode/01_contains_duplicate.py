@@ -26,11 +26,18 @@ def containsDuplicate_hashmap(nums):
     return False
 
 
-def containsDuplicate_set(nums):
-    s = set(nums)
-    return not (len(s) == len(nums))
 
+# Won't pass leetcode - slow code
+def containsDuplicate_bf(nums):
+        idx = 0
+        for el_1 in nums: 
+            for el_2 in nums[idx+1:]: 
+                if el_1 == el_2: 
+                    print(el_1, el_2)
+                    return True
+            idx += 1
+        return False
 
-nums = [1, 2, 3, 4]
-r = containsDuplicate(nums)
+nums =[1,1,1,3,3,4,3,2,4,2]
+r = containsDuplicate_bf(nums)
 print(r)
