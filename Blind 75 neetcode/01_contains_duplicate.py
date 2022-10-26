@@ -1,19 +1,19 @@
 '''
     Subset of Arrays and Hashing
-    
-    https://leetcode.com/problems/contains-duplicate/submissions/ 
 
-    approach: hashmap 
+    https://leetcode.com/problems/contains-duplicate/submissions/
+
+    approach: hashmap
         create a empty hashmap
         populate hashmap with each number as key and value will be incremented as encouter
-        if at any point the value is greater that 0 
+        if at any point the value is greater that 0
         we know that there must be more than one same element
         so we can return True
         or return False at the end
 '''
 
 
-def containsDuplicate(nums):
+def containsDuplicate_hashmap(nums):
     hashmap = {}
 
     for el in nums:
@@ -25,6 +25,10 @@ def containsDuplicate(nums):
             return True
     return False
 
+
+def containsDuplicate_set(nums):
+    s = set(nums)
+    return not (len(s) == len(nums))
 
 
 nums = [1, 2, 3, 4]
