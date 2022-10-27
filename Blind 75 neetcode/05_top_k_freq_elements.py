@@ -46,15 +46,15 @@ def topKFrequent(nums: List[int], k: int) -> List[int]:
     for key, val in count.items(): 
         freq[val].append(key)
         
-    output = []
+    bucket = []
     reversed_freq = freq[::-1]
     for i in range(len(reversed_freq)): 
-        
+
         for el in reversed_freq[::-1][i]:    
-            output.append(el)
+            bucket.append(el)
             
-            if len(output) == k: 
-                return output
+            if len(bucket) == k: 
+                return bucket
 
 
 nums = [1,1,1,2,2,3]
