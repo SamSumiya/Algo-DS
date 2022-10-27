@@ -22,6 +22,9 @@
 '''
 
 
+from typing import List
+
+
 class Solution:
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
         hashmap = {}
@@ -37,7 +40,7 @@ class Solution:
                 if sorted_el in hashmap:
                     hashmap[sorted_el].append(el)
 
-        for key, value in hashmap.items():
+        for _, value in hashmap.items():
             output.append(value)
 
         return output
