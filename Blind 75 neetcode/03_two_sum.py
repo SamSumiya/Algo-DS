@@ -31,3 +31,4 @@ class Solution:
             if el not in hashmap: 
                 hashmap[el] = idx
             
+        return 
