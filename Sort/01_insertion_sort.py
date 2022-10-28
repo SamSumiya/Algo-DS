@@ -23,7 +23,7 @@
 
 def insertion_sort(l): 
 
-    i = 0
+    i = 1
 
     while i < len(l): 
         base = l[i]
