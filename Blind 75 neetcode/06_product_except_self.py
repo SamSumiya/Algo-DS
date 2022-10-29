@@ -25,6 +25,9 @@
         we have to be careful with the value -1 in else statement, 
         we can use elif to avoid when it is -1 or 
         else and if to avoid the issue there 
+
+    approach: use just one array
+        
     
 
 '''
@@ -35,39 +38,70 @@ from typing import List
 class Solution:
     def productExceptSelf(self, nums: List[int]) -> List[int]:
         prefix = []
-        postfix = [] 
-        output = [] 
+        postfix = []
+        output = []
         i = 0
         j = len(nums) - 1
         while i < len(nums):
             if len(prefix) == 0:
                 prefix.append(nums[i] * 1)
-            else: 
+            else:
                 prefix.append(nums[i] * prefix[i-1])
-            
-            i += 1 
-        k = -1 
-        while j >= 0: 
-            if len(postfix) == 0: 
+
+            i += 1
+        k = -1
+        while j >= 0:
+            if len(postfix) == 0:
                 postfix.append(nums[j] * 1)
             else:
                 postfix.append(nums[j] * postfix[k])
-            
+
             j -= 1
-            k += 1 
-        
+            k += 1
+
         l = -1
         m = len(postfix) - 2
-        
+
         while l < len(prefix) - 1:
-            if l == -1: 
-                output.append(1 * postfix[m]) 
-            if m == -1: 
-                output.append(1 * prefix[l]) 
-            else :
-                if l > -1: 
+            if l == -1:
+                output.append(1 * postfix[m])
+            if m == -1:
+                output.append(1 * prefix[l])
+            else:
+                if l > -1:
                     output.append(prefix[l] * postfix[m])
             m -= 1
-            l += 1 
-        
+            l += 1
+
         return output
+
+
+class Solution:
+    def productExceptSelf(self, nums: List[int]) -> List[int]:
+
+        output = []
+        i = 0
+
+        while i < len(nums):
+            if i == 0:
+                output.append(1)
+            else:
+                output.append(output[i-1] * nums[i-1])
+
+            i += 1
+
+        j = len(nums)
+        i = 0
+
+        while j > 0:
+            if j == len(nums):
+                current_sum = 1
+                output[j-1] = current_sum * output[j-1]
+
+            else:
+                current_sum *= nums[j]
+                output[j-1] = output[j-1] * current_sum
+
+            j -= 1
+
+        return (output)
