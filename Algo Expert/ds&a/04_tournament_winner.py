@@ -40,7 +40,7 @@ def tournamentWinner(competitions, results):
     max_value_2 = max(hashmap.items(), key = lambda x: x[1])
     print(max_value == max_value_2)
     print(max_value, max_value_2)
-    return max_value[0]
+    return max_value_2[0]
 
 
 
