@@ -7,7 +7,7 @@
         
         
         loop through the array
-        if array[i] == seq[j] then we will increment j by 1
+        if array[i] == seq[j] and the j is less than the len(seq) then we will increment j by 1
         at the end if the j is the same as the len(sequence)
         then we know that j reached to the last element of seq
 '''
