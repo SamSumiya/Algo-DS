@@ -10,6 +10,16 @@
         [-5, 0, 5] it will be [25, 0, 25] and sort will work again
     
     Approach: O(n) time complexity
+
+        this is a bit more advanced approach
+        we can create a new array with values 0 by [ o for _ in arr]
+        then get the first idx and last idx 
+        
+        then we can make a comparison between first and last element
+        if the abs(first) is greater then abs(last)
+        then we can replace the first * first to the idx (this idx must be from the last idx)
+            reason: if we have a list [-6, 0, 5] and we add each value to the first idx 
+            then we will have [36, 25, 0]
         
 
 '''
@@ -39,7 +49,7 @@ def sortedSquaredArray(array):
 
 
 
-array = [-10, -5, 0, 5, 10]
+array = [-2, 0, 5, 10]
 
 r = sortedSquaredArray(array)
 print(r)
