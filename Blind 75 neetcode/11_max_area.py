@@ -1,6 +1,13 @@
 '''
     Max Area
 
+    approach: two pointer
+        we need to have width and height (lower) to get the right area
+        we can start at the first and last index and get the lower end of the height and the width which is right - left
+        then if the height on the left or height on the right is less then the opposite side
+        we can eitehr increment or decrement the left or right index
+        then we can calculate again to get that area and compare it to the max area to get the right answer. 
+
 '''
 
 from typing import List
