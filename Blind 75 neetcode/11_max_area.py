@@ -47,6 +47,23 @@ class Solution:
                 max_area = current_area
             
         return max_area
+    
+    def max_area_neet_code(self, height: List[int]) -> int: 
+        left = 0 
+        right = len(height) - 1 
+        max_area = 0 
+
+        while left < right:
+            current_min_height = min(height[left], height[right])
+            current_width = right - left
+            current_max_area = current_min_height * current_width
+            if height[left] < height[right]:
+                left += 1 
+            else: 
+                right -= 1 
+            max_area = max(max_area, current_max_area)
+        
+        return max_area
         
 
 
@@ -5058,4 +5075,5 @@ height_1 = [1,8,6,2,5,4,8,3,7]
 s = Solution()
 a = s.maxArea_bf(height)
 b = s.max_area_pointers(height)
-print(a,b)
+c = s.max_area_neet_code(height)
+print(a,b,c)
