@@ -1,6 +1,13 @@
 '''
     Max Area
 
+    approach: two pointer
+        we need to have width and height (lower) to get the right area
+        we can start at the first and last index and get the lower end of the height and the width which is right - left
+        then if the height on the left or height on the right is less then the opposite side
+        we can eitehr increment or decrement the left or right index
+        then we can calculate again to get that area and compare it to the max area to get the right answer. 
+
 '''
 
 from typing import List
@@ -46,6 +53,23 @@ class Solution:
             if max_area < current_area: 
                 max_area = current_area
             
+        return max_area
+    
+    def max_area_neet_code(self, height: List[int]) -> int: 
+        left = 0 
+        right = len(height) - 1 
+        max_area = 0 
+
+        while left < right:
+            current_min_height = min(height[left], height[right])
+            current_width = right - left
+            current_max_area = current_min_height * current_width
+            if height[left] < height[right]:
+                left += 1 
+            else: 
+                right -= 1 
+            max_area = max(max_area, current_max_area)
+        
         return max_area
         
 
@@ -5058,4 +5082,5 @@ height_1 = [1,8,6,2,5,4,8,3,7]
 s = Solution()
 a = s.maxArea_bf(height)
 b = s.max_area_pointers(height)
-print(a,b)
+c = s.max_area_neet_code(height)
+print(a,b,c)
