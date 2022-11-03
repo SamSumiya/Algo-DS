@@ -28,11 +28,22 @@ def sliding_window_bf(arr, k):
 
     return max_sum
 
-def sliding_window(arr, k): 
-    pass 
+
+def sliding_window(arr, k):
+    current_sum = sum(arr[:k])
+    max_val = current_sum
+    length = len(arr)
+
+    for i in range(length - k):
+        current_sum = current_sum - arr[i] + arr[i+k]
+        max_val = max(current_sum, max_val)
+
+    return max_val
 
 
-arr = [1, 4, 2, 10, 2, 3, 1, 0, 20]
+arr = [1, 4, 2, 10, 23, 3, 1, 0, 20]
 k = 4
-r = sliding_window_bf(arr, k)
-print(r)
+a = sliding_window_bf(arr, k)
+b = sliding_window(arr, k)
+
+print(a, b)
