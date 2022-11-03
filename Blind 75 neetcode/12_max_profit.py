@@ -21,8 +21,23 @@ class Solution:
             
         return profit
 
+    def maxProfit(self, prices: List[int]) -> int:
+        max_profit = 0
+        i = 0 
+        j = 1 
+        
+        while j < len(prices): 
+            if prices[i] > prices[j]: 
+                i = j       
+            else:
+                max_profit = max(prices[j] - prices[i], max_profit)
+            j += 1 
+
+        return max_profit
+
 arr = [7,1,5,3,6,4]
 s = Solution()
-r = s.maxProfit_bf(arr)
+a = s.maxProfit_bf(arr)
+b = s.maxProfit(arr)
 
-print(r)
+print(a,b)
