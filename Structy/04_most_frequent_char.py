@@ -23,43 +23,62 @@
     7. final step is to return the best 
 '''
 
-from tkinter import S
 
-
-def most_frequent_char_1(string): 
+def most_frequent_char_1(string):
     size = len(string)
     output = ''
     current = 0
-    dict = {} 
+    dict = {}
 
     for s in string:
-        if s not in dict: 
+        if s not in dict:
             dict[s] = 1
-        else: 
+        else:
             dict[s] += 1
-    
-    for key, val in dict.items(): 
+
+    for key, val in dict.items():
         if val > current:
             current = val
             output = key
-    
-    return output
 
+    return output
 
 
 def most_frequent_char_2(string):
-    dict = {} 
+    dict = {}
 
-    for s in string: 
-        if s not in dict: 
-            dict[s] = 1 
-        else: 
-            dict[s] += 1 
-    
+    for s in string:
+        if s not in dict:
+            dict[s] = 1
+        else:
+            dict[s] += 1
+
     output = None
 
-    for s in string: 
-        if output is None or dict[s] > dict[output]: 
+    for s in string:
+        if output is None or dict[s] > dict[output]:
             output = s
-    
+
     return output
+
+
+def most_frequent_char_list(string):
+    alps = [0 for _ in range(25)]
+    alphabets = 'abcdefghijklmnopqrstuvwxyz'
+    indice = []
+    max_val = 0
+
+    for el in string:
+        idx = alphabets.index(el)
+        alps[idx] += 1
+
+    max_num = max(alps)
+
+    for idx, val in enumerate(alps):
+        if val == max_num:
+            indice.append(idx)
+
+    for el in string:
+        alp_idx = alphabets.index(el)
+        if alp_idx in indice:
+            return el
