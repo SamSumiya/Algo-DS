@@ -107,3 +107,22 @@ def longest_streak(head, prev_val=None):
         head = head.next
 
     return longest_streak
+
+
+def longest_streak(head):
+    longest_streak = float('-inf')
+    current_streak = 1
+    if head is None:
+        return 0
+
+    while head:
+        next = head.next
+        if head.next and head.val == head.next.val:
+            current_streak += 1
+        else:
+            if longest_streak <= current_streak:
+                longest_streak = current_streak
+            current_streak = 1
+
+        head = next
+    return longest_streak

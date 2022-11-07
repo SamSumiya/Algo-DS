@@ -47,8 +47,25 @@ def remove_node(head, target_val):
     return head
 
 
+def remove_node_my_iter(head, target_val):
+    if head.val == target_val:
+        return head.next
+    tail = head
+
+    while tail:
+
+        if tail.next and tail.next.val == target_val:
+            if tail.next.val == target_val:
+                tail.next = tail.next.next
+                break
+        tail = tail.next
+
+    return head
+
+
 def remove_node_recur(head, target_val):
-    if head is None: return
+    if head is None:
+        return
 
     next_node = head.next
     if head.val == target_val:
