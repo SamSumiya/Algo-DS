@@ -40,6 +40,20 @@ def is_univalue_list_iter(head):
     return True
 
 
+def is_univalue_list(head, prev_val=None):
+    tail = head
+
+    while tail:
+        if prev_val is None:
+            prev_val = tail.val
+        else:
+            if prev_val != tail.val:
+                return False
+            prev_val = tail.val
+        tail = tail.next
+    return True
+
+
 def is_univalue_list_recur_b(head):
     if head.next is None:
         return True
@@ -51,13 +65,12 @@ def is_univalue_list_recur_b(head):
     return is_univalue_list_recur_b(next_node)
 
 
-def is_univalue_list_recur(head, prev_val = None): 
-    if head is None: return True
+def is_univalue_list_recur(head, prev_val=None):
+    if head is None:
+        return True
 
-    if prev_val == None or head.val == prev_val: 
+    if prev_val == None or head.val == prev_val:
         prev_val = head.val
         return is_univalue_list_recur(head, prev_val)
-    else: 
+    else:
         return False
-    
-    

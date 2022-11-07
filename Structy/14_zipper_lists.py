@@ -18,7 +18,7 @@
 
     
     approach: recursion
-        basecase will be either ll1 or ll2 is none, when it becomes none we can return ll1 or ll2
+        basecase will be either ll1 or ll2 is none, when it becomes none we can return ll1 or ll2 which will just add the remain leftovers to head_1
         keep getting the next ll1 and ll2
         modify ll1 and ll2 
             1. ll1 is easy we just need to set ll1.next = ll2 
@@ -31,6 +31,7 @@
                 f. and since ll1.next is ll2
                 g. the outcome will be 1 -> a -> 2 
                 h. then we will continue the process
+                
 '''
 
 
