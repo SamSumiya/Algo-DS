@@ -4,11 +4,11 @@
 
     Subset of Arrays and Hashing
 
-    given a list that contains words and some of them are potential anagrams 
+    given a list that contains words and some of them are potential anagrams
     the job is to group the same anagrams into the same list and return a 2-d list
 
 
-    approach: hashmap 
+    approach: hashmap
 
         create a new hashmap
         sorted each element in the list and use it as the key and store the unsorted element as values
@@ -22,11 +22,12 @@
 '''
 
 
+from collections import defaultdict
 from typing import List
 
 
 class Solution:
-    def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
+    def groupAnagrams_1(self, strs: List[str]) -> List[List[str]]:
         hashmap = {}
         output = []
 
@@ -44,3 +45,32 @@ class Solution:
             output.append(value)
 
         return output
+
+    def groupAnagrams_2(self, strs: List[str]) -> List[List[str]]:
+        hashmap = defaultdict(list)
+
+        for word in strs:
+            count = [1] * 26
+
+            for el in word:
+                count[ord(el) - ord('a')] += 1
+            hashmap[tuple(count)].append(word)
+
+        return hashmap.values()
+
+    def groupAnagrams_3(self, strs):
+        groups = {}
+
+        for word in strs:
+            alphabets = [0 for _ in range(26)] 
+            
+            for letter in word:
+                idx = ord(letter) - ord('a')
+                alphabets[idx] += 1  
+                
+            if tuple(alphabets) not in groups: 
+                groups[tuple(alphabets)] = [word]
+            else:
+                groups[tuple(alphabets)].append(word)
+
+        return groups.values()
