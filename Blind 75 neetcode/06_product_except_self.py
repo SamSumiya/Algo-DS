@@ -49,6 +49,7 @@ class Solution:
                 prefix.append(nums[i] * prefix[i-1])
 
             i += 1
+        print(prefix)
         k = -1
         while j >= 0:
             if len(postfix) == 0:
@@ -58,7 +59,7 @@ class Solution:
 
             j -= 1
             k += 1
-
+        print(postfix)
         l = -1
         m = len(postfix) - 2
 
@@ -76,32 +77,37 @@ class Solution:
         return output
 
 
-class Solution:
-    def productExceptSelf(self, nums: List[int]) -> List[int]:
+# class Solution:
+#     def productExceptSelf(self, nums: List[int]) -> List[int]:
 
-        output = []
-        i = 0
+#         output = []
+#         i = 0
 
-        while i < len(nums):
-            if i == 0:
-                output.append(1)
-            else:
-                output.append(output[i-1] * nums[i-1])
+#         while i < len(nums):
+#             if i == 0:
+#                 output.append(1)
+#             else:
+#                 output.append(output[i-1] * nums[i-1])
 
-            i += 1
+#             i += 1
 
-        j = len(nums)
-        i = 0
+#         j = len(nums)
+#         i = 0
 
-        while j > 0:
-            if j == len(nums):
-                current_sum = 1
-                output[j-1] = current_sum * output[j-1]
+#         while j > 0:
+#             if j == len(nums):
+#                 current_sum = 1
+#                 output[j-1] = current_sum * output[j-1]
 
-            else:
-                current_sum *= nums[j]
-                output[j-1] = output[j-1] * current_sum
+#             else:
+#                 current_sum *= nums[j]
+#                 output[j-1] = output[j-1] * current_sum
 
-            j -= 1
+#             j -= 1
 
-        return (output)
+#         return (output)
+
+
+nums = [1,2,3,4] 
+s = Solution()
+print(s.productExceptSelf(nums))

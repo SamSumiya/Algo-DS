@@ -35,7 +35,7 @@ class Solution:
 
         return max_profit
 
-arr = [7,1,5,3,6,4]
+arr = [7,6,8,3,6,4]
 s = Solution()
 a = s.maxProfit_bf(arr)
 b = s.maxProfit(arr)
