@@ -24,5 +24,13 @@ class Solution(object):
                 i += 1
         
             j += 1 
-        print(i)
         return i == len(s)
+
+    def isSub_recur(self, s, t): 
+        def helper(s_l, t_l):
+            if s_l == L: return True
+            tmp = t.find(s[s_l], t_l)
+            if tmp == -1: return False
+            return helper(s_l + 1, t_l + 1)
+        L = len(s)
+        return helper(0,0)
