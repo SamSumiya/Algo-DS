@@ -13,6 +13,24 @@ Approach:
     1. we will need to use extend so it will be flattened to 1-d list
     2. we will need to get the node from the back, so we have to reverse the list
     
+Approach: recursion
+create a empty list and a innner function
+
+if the root has value then we will add the value to the list
+thenb we will loop through the root for its children
+so for a nary like 
+      1
+    / | \ 
+   3  2  4 
+ / \
+5   6 
+
+the first time we will get 1 
+then we will loop throug [3, 2 ,4]
+then we get 3
+since 3 has 5 and 6, we will go through [5,6]
+then we go down to 5
+there is nothing below 5, so we will go to to 
 
 '''
 
@@ -28,3 +46,14 @@ class Solution(object):
             stack.extend(reversed(temp.children))
         
         return out
+    
+    def preorder_recur(self, root):
+        def recur(root): 
+            if root:
+                output.append(root.val)
+                for el in root.children: 
+                    recur(el)
+
+        output = [] 
+        recur(root)
+        return output
