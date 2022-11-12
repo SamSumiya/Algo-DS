@@ -13,6 +13,9 @@ Approach:
     1. we will need to use extend so it will be flattened to 1-d list
     2. we will need to get the node from the back, so we have to reverse the list
     
+    we really should utilize the pop function to get the last value from the list and stack data structure to get each value to the output
+    
+
 Approach: recursion
 create a empty list and a innner function
 
