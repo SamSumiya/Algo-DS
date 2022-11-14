@@ -39,18 +39,23 @@ class Solution(object):
         count = {} 
         res = 0
         l = 0 
+        r = 0 
 
-        for i in range(len(s)): 
-            count[s[i]] = 1 + count.get(s[i], 0)
-            if (i - l + 1) - max(count.values()) > k: 
+        for r in range(len(s)): 
+            print(r)
+            count[s[r]] = 1 + count.get(s[r], 0)
+            # print(count)
+            if (r - l + 1) - max(count.values()) > k: 
                 count[s[l]] -= 1
                 l += 1
-        res = max(res, i - l + 1) 
+            # r += 1
+            print(l, r, count)
+        res = max(res, r - l + 1 ) 
 
         return res
 
-input = 'KRSCDCSONAJNHLBMDQGIFCPEKPOHQIHLTDIQGEKLRLCQNBOHNDQGHJPNDQPERNFSSSRDEQLFPCCCARFMDLHADJADAGNNSBNCJQOF'
+input = 'ABAB'
 so = Solution()
-r_1 = so.characterReplacement(input, 4)
-r_2 = so.characterReplacement_bf(input, 4)
+r_1 = so.characterReplacement(input, 2)
+r_2 = so.characterReplacement_bf(input, 2)
 print(r_1, r_2)
