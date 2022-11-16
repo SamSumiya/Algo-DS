@@ -14,7 +14,6 @@ class Solution(object):
             if ord(li[i]) > ascii_a:
                 li[i] = 'a'
                 return ''.join(li)
-        print(li[-1])
         li[-1] = 'b'
         return ''.join(li)
 
