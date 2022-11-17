@@ -50,3 +50,8 @@ class Solution(object):
         if carry == 1:
             output.append(carry)
         return output[::-1]
+
+    def plusOne(self, digits):
+        s = ''.join([str(d) for d in digits])
+        total = int(s) + 1
+        return [int(i) for i in str(total)]
