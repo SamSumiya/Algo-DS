@@ -26,27 +26,27 @@ class Solution(object):
         :type s: str
         :rtype: int
         """
-        hashmap = {}
-        count = 0
+        # hashmap = {}
+        # count = 0
 
-        for val in s:
-            if val not in hashmap:
-                hashmap[val] = 1
-            else:
-                hashmap[val] += 1
+        # for val in s:
+        #     if val not in hashmap:
+        #         hashmap[val] = 1
+        #     else:
+        #         hashmap[val] += 1
 
-        for val in hashmap.values():
-            if val % 2 == 0:
-                count += val
-            else:
-                count += val - 1
+        # for val in hashmap.values():
+        #     if val % 2 == 0:
+        #         count += val
+        #     else:
+        #         count += val - 1
 
-        for val in hashmap.values():
-            if val % 2 != 0:
-                count += 1
-                break
+        # for val in hashmap.values():
+        #     if val % 2 != 0:
+        #         count += 1
+        #         break
 
-        return count
+        # return count
     
     def longestPalindrome_better(self, s): 
         hashmap = {} 
