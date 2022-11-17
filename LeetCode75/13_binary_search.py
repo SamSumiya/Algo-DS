@@ -1,23 +1,33 @@
 class Solution(object):
-    def search(self, nums, target):
+    def search_iter(self, nums, target):
         """
         :type nums: List[int]
         :type target: int
         :rtype: int
         """
-        low = 0
-        high = len(nums) - 1 
+        if target not in nums:
+            return -1
+        if nums[len(nums) // 2] == target:
+            return len(nums) // 2
+        elif nums[len(nums)//2] < target:
+            return len(nums) // 2 + self.search(nums[len(nums)//2:], target)
+        elif nums[len(nums) // 2] > target:
+            return self.search(nums[:len(nums) // 2], target)
 
-        while low <= high: 
-            mid = low + (high - low ) // 2
+    def search_recur(self, nums, target):
+        if target not in nums:
+            return -1
+        if nums[len(nums) // 2] == target:
+            return len(nums) // 2
+        elif nums[len(nums)//2] < target:
+            return len(nums) // 2 + self.search(nums[len(nums)//2:], target)
+        elif nums[len(nums) // 2] > target:
+            return self.search(nums[:len(nums) // 2], target)
 
-            if nums[mid] == target: 
-                return mid
-            elif nums[mid] < target: 
-                low = mid + 1 
-            else: 
-                high = mid - 1 
-        
-        return -1
-        
-        
+
+nums = [3, 4, 5, 6, 7, 8, 9]
+x = 8
+so = Solution()
+r = so.search(nums, x)
+
+print(r)
