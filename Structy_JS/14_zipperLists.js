@@ -23,3 +23,18 @@ const zipperListsIter = ( head1, head2 ) =>
     if ( tail2 ) tail.next = tail2;
     return head1;
 };
+
+
+const zipperListsRecur = ( head1, head2 ) =>
+{
+    if ( head1 === null ) return head2;
+    if ( head2 === null ) return head1;
+
+    const next_1 = head1.next;
+    const next_2 = head2.next;
+
+    head1.next = head2;
+    head2.next = zipperLists( next_1, next_2 );
+
+    return head1;
+};
